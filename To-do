@@ -1,0 +1,20 @@
+-get some inspiration on what do the ui will be
+-use the stackNavigator header
+-creating the ui for login page
+-implimenting the google auth and sign in with email and password
+
+
+
+
+
+
+
+what is used
+-colors used for header {
+    color:"#00C0F0", limeBlue
+    signUP  and Login Colors:#3E8525'
+}
+-font used {
+    monospace,
+
+}
