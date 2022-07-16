@@ -1,0 +1,99 @@
+
+9 july 2002
+    -get some inspiration on what do the ui will be
+    -use the stackNavigator header
+    -creating the ui for login page
+    -implimenting the google auth and sign in with email and password
+
+    what is used
+    -colors used for header {
+        fontFamily:'Avenir Next'
+        login buttonColor:#33b249
+        color:'CD0B0B'
+        color:"#00C0F0", limeBlue
+        signUP  and Login Colors:#3E8525'
+    }
+    -font used {
+        monospace,
+
+    }
+
+    -create the responsive ui on the header
+
+
+    10 july 2022
+     sign in and log in ui
+
+   11 july 2022
+
+    -login authentication
+    -signup authentication
+
+    12 july 2022
+
+    login in with google
+    login with facebook
+
+
+    //signin with google
+
+
+    
+const [accessToken , setAccessToken] = React.useState();
+const [userInfo , setUserInfo] = React.useState();
+
+
+const [request , response , promptAsync] = Google.useAuthRequest({
+webClientId:'638762542103-sdt23j2649ahk1d7ncbnlsq6fb29tq2g.apps.googleusercontent.com'
+  
+})
+     useEffect(()=>{
+    
+    if(response?.type === 'success'){
+      setAccessToken(response.authentication.accessToken);
+      console.log('success')
+    }else{
+      console.log('something is wrong , the state is not changed')
+    }
+
+   }, [response]),
+
+   async function getUserData(){
+    let userInfoResponse = await fetch("https://www.googleapis.com/userinfo/v2/me", {
+      headers:{Authorization: `Bearer ${accessToken}`}
+    });
+
+    userInfoResponse.json().then(data=>{
+      setUserInfo(data);
+    })
+   }
+
+   function showUserInfo(){
+    if(userInfo){
+      return(
+        <View>
+          <Text>{userInfo.email}</Text>
+        </View>
+      )
+    }
+   }
+  
+  function authenticate(){
+    if(accessToken){
+       getUserData()
+    }else{
+       promptAsync({proxyOptions:false, showInRecents:true,})
+    }
+  }
+
+  //errors
+   when it it first load it shows me the rootApp first
+   user Is the problems 
+
+  //
+  didn't do  sign in with google and facebook 
+  and password and email validation 
+  and email verification
+
+
+    

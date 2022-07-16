@@ -1,67 +1,53 @@
-import { View, Text, ScrollView , StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, ScrollView , StyleSheet, TouchableOpacity ,TextInput} from 'react-native'
+import React,{useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import {  MaterialIcons } from '@expo/vector-icons';
-import InputTextField from '../Widget/InputTextField';
-
+import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import useAuth from '../../Hooks/useAuth';
 
 
 
 const WebLogin = () => {
   const navigation = useNavigation();
+  const [Email , setEmail] = useState()
+  const [password ,setPassword] = useState()
+  const {login} = useAuth()
+
+  const onSubmittion=async(e)=>{
+    e.preventDefault();
+    try{
+      await login(Email,password)
+    }catch(error){
+      console.log('email doest exists on database')
+      console.log(error.message)
+    }
+  }
   return (
     <ScrollView
-    style={{
-      backgroundColor:'white',
-    }}>
-      <View style={{
-        flexDirection:'row',
-        justifyContent:'space-between',
-        padding:20,
-        
-        }}>
-        <View style={{
-          flex:1,
-          flexDirection:'row',
-          alignItems:'center',
-          }}>
-
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('webSignup')
-            }}
-           >
+        style={{backgroundColor:'white',}}>
+      <View style={{flexDirection:'row',justifyContent:'space-between',padding:20, width:'80%' }}>
+        <View style={{flex:1,flexDirection:'row',alignItems:'center',}}>
+          <TouchableOpacity onPress={() => {navigation.navigate('webSignup')}}>
               <Text style ={[style.text  ]}>Signup</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-             onPress={() => {
-              navigation.navigate('webLogin')
-            }}
-          >
+          <TouchableOpacity onPress={() => {navigation.navigate('webLogin')}}>
               <Text style = {[style.text ,style.colors]}>Login</Text>
           </TouchableOpacity>
+       </View>
+       <TouchableOpacity onPress={() => { navigation.navigate('LandingPage') }}>
+        <View >
+          <Entypo size={30} color='black' name='cross'/>
         </View>
-        <View style={{ padding:15}}>
-          <Text>Cancel</Text>
-        </View>
+       </TouchableOpacity>
       </View>
 
       {/* sign in buttons "google  and facebook "  */}
-      <View
-        style={
-          {
-            paddingLeft:20,
-            paddingRight:20,
-            paddingBottom:20,
-            paddingTop:10,
 
-          }
-        }>
+      <View style={{ paddingLeft:20, paddingRight:20,paddingBottom:20,paddingTop:10,}}>
 
-          <View style={style.padding}>
-            <TouchableOpacity style={
-              [style.iconButtonColor,
-              style.appbutton]}>
+        <View style={style.padding}>
+           <TouchableOpacity style={[style.iconButtonColor,style.appbutton]}>
             <View
                 style={
                   {
@@ -70,12 +56,7 @@ const WebLogin = () => {
                     paddingLeft:20,
                   }
                 }>
-                <MaterialIcons 
-                  style={{ 
-                    paddingRight:40,
-                  }}
-                  size={30}
-                  name='email'/>
+               <AntDesign colos='blue' name='google' style={{ paddingRight:40}} size={30} />
                 <Text style={style.appButtonText}>
                   Log in with Google
                 </Text>
@@ -84,106 +65,59 @@ const WebLogin = () => {
             
           </View>
           <View style={style.padding}>
-            <TouchableOpacity style={[
-              style.appbutton,
-              style.iconButtonColor]}>
-              <View
-                style={
-                  {
-                    flexDirection:'row',
-                    alignItems:'center',
-                    paddingLeft:20,
-                  }
-                }>
-                <MaterialIcons 
-                  style={{ 
-                    paddingRight:40,
-                    color:'blue'
-                  }}
-                  size={30}
-                  name='facebook'/>
+            <TouchableOpacity style={[style.appbutton,style.iconButtonColor]}>
+              <View style={{flexDirection:'row', alignItems:'center',paddingLeft:20,}}>
+                <MaterialIcons style={{ paddingRight:40,color:'blue'}} size={30} name='facebook'/>
                 <Text style={style.appButtonText}>
                   Log in with facebook
                 </Text>
               </View>
             </TouchableOpacity>
           </View>
-          <Text
-              style={{
-                color:'grey',
-                fontWeight:'bold',
-                fontSize:20,
-                paddingLeft:210,
-                paddingTop:50,
-              }}>OR</Text>
-
+          <Text style={{color:'grey',fontWeight:'bold',fontSize:20,paddingLeft:210,paddingTop:50,}}>
+              OR</Text>
 
             {/* Input form field */}
-           <View 
-              style={{
-                paddingTop:50,
-                width:500,
-              }}>
-              <InputTextField  title="Email" />
-              <InputTextField
-                  style={{
+           <View style={{paddingTop:50,width:"80%",}}>
+              {/* email input */}
+              <View style={{ borderBottomColor: "#D8D8D8", borderBottomWidth: 1 }}>
+                <Text style={style.inputTitle}> Email </Text>
+                <TextInput 
+                  onChangeText={(val) =>{
+                    setEmail(val)
+                  }}
+                  style={[style.input]} 
+                  />
+              </View>
+              {/* password input field */}
+              <View style={{ borderBottomColor: "#D8D8D8", borderBottomWidth: 1 }}>
+                <Text style={[style.inputTitle ,{
                       marginTop: 32,
                       marginBottom: 8
+                  }]}> Password </Text>
+
+                <TextInput 
+                  secureTextEntry="true"
+                  onChangeText={(val) =>{
+                    setPassword(val)
                   }}
-                  title="Password"
-                  isSecure={true}
-                    />
-            
+                  style={[style.input]} 
+                  />
+              </View>
            </View>
-
-          
-          <TouchableOpacity
-            style={
-              {
-                paddingLeft:389,
-              }
-            }
-            >
-            <Text 
-              style={
-                {
-                  color:'grey',
-                  fontSize:15,
-                }
-              }>Forgot password?</Text>
+          <TouchableOpacity style={ {  paddingLeft:389, }}>
+            <Text style={{color:'grey',fontSize:15,}}>Forgot password?</Text>
           </TouchableOpacity>
-       
 
-          <View
-          style={{
-            paddingTop:50,
-          }}>
-
-          <View
-            style={
-              {
-                paddingBottom:50,
-              }
-            }>
-              <TouchableOpacity
-                style={[
-
-                  {paddingTop:20,},
-                  style.ButtonColor,
-                  style.padding,
-                  style.appbutton,
-                  
-                ]}>
-                <Text 
-                style={[
-                  style.appButtonText,
-                  
-                ]}>
+          <View style={{ paddingTop:50,}}>
+           <View style={{ paddingBottom:50,}}>
+              <TouchableOpacity onPress={onSubmittion} style={[{paddingTop:20,},style.ButtonColor,style.padding,style.appbutton,]}>
+                <Text style={[ style.appButtonText, ]}>
                   Log in
                 </Text>
               </TouchableOpacity>
+            </View>
           </View>
-        </View>
       </View>
 
     </ScrollView>
@@ -211,7 +145,7 @@ const style = StyleSheet.create({
     paddingTop:20,
     paddingBottom:20,
     Height:20,
-    width:500,
+    width:'80%',
     borderStyle:'solid',
     borderColor:'black',
     shadowColor: "rgba(171, 180, 189, 0.35)",
@@ -235,6 +169,20 @@ const style = StyleSheet.create({
   },
   iconButtonColor:{
     backgroundColor:'white'
-  }
+  },
+  input: { 
+    paddingLeft:10,
+    PaddingRight:10,
+    paddingVertical: 12,
+    color: "black",
+    fontSize: 18,
+    fontFamily: "Monospace",
+    
+ },
+ inputTitle: {
+  color: "#ABB4BD",
+  fontSize: 14
+ },
+
 })
 export default WebLogin
