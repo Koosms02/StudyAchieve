@@ -5,7 +5,8 @@ import { useNavigation } from '@react-navigation/native'
 
 
 const Header = ({
-    name ,
+    home , search ,notification , upload , library ,
+    bool,
     logIn ,
     SignUp ,
     profile ,
@@ -15,14 +16,33 @@ const Header = ({
     color ,
     loginScreen ,
     signupScreen }) => {
-
-    const navigation = useNavigation()
+  
+  function Name(){
+    if(bool === true){
+        if( home === true){
+            return 'Home'
+        }else if(search === true){
+            return 'Search'
+        }else if(notification === true){
+            return 'Notification'
+        }else if(upload === true){
+            return 'Upload'
+        }else if(library ===true){
+            return 'Library'
+        }
+    }else{
+       return 'StudyArchieve'
+    }
+    
+  }
+  const navigation = useNavigation()
   return (
 
     <View
        style={[style.view , {backgroundColor:color}] }>
         <View>
-            <Text style = {{color:'#00C0F0' , fontSize:30 , fontWeight:'bold' ,fontFamily:'monospace'}}> StudyArchieve</Text>
+            <Text style = {{color:'#00C0F0' , fontSize:30 , fontWeight:'bold' ,fontFamily:'monospace'}}> 
+                {Name()}</Text>
         </View>
         <View style={{flexDirection:'row'}}>
             <TouchableOpacity
@@ -50,7 +70,7 @@ const style = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        height:60,
+        height:70,
         width:'100%',
         backgroundColor:'white',
         elevation:8,

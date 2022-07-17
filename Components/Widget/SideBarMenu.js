@@ -8,13 +8,8 @@ import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
-const SideBarMenu = ({name , Icon , NavScreen ,}) => {
+const SideBarMenu = ({home ,setHome ,library ,setLibrary ,search ,setSearch,notification , setNotification,upload ,setUpload}) => {
 
-  const [home , setHome] = useState(true)
-  const [library , setLibrary] = useState(false)
-  const [search , setSearch] = useState(false)
-  const [notification , setNotification] = useState(false)
-  const [upload , setUpload] = useState(false)
   const onSelectColor ='white'
 
 
@@ -33,7 +28,7 @@ const SideBarMenu = ({name , Icon , NavScreen ,}) => {
                 setSearch(false) 
               }}
               >
-                <View style={[style.ViewIcon]}>
+                <View style={[home === true ?(style.SelectedView):(style.UnSelected)]}>
                     <AntDesign name = 'home' size={30} color={home === true ?(onSelectColor):('black')}/>
                 </View>
             </TouchableOpacity>
@@ -46,7 +41,7 @@ const SideBarMenu = ({name , Icon , NavScreen ,}) => {
                     setSearch(false) 
                   }}
             >
-             <View style={[style.ViewIcon]}>
+             <View style={[library === true ?(style.SelectedView):(style.UnSelected)]}>
                 <Feather name = 'book-open' size={30}  color={library === true ?(onSelectColor):('black')}/>
              </View>
             </TouchableOpacity>
@@ -58,7 +53,7 @@ const SideBarMenu = ({name , Icon , NavScreen ,}) => {
                     setUpload(false),
                     setSearch(true) 
                   }}>
-                <View style={[style.ViewIcon]}>
+                <View style={[search === true ?(style.SelectedView):(style.UnSelected)]}>
                     <Feather name = 'search' size={30}  color={search === true ?(onSelectColor):('black')}/>
                 </View>
             </TouchableOpacity>
@@ -71,7 +66,7 @@ const SideBarMenu = ({name , Icon , NavScreen ,}) => {
                     setSearch(false) 
                 }}>
 
-                <View style={[style.ViewIcon]}>
+                <View style={[notification === true ?(style.SelectedView):(style.UnSelected)]}>
                     <Ionicons name = 'notifications-outline' size={30} color={notification === true ?(onSelectColor):('black')}/>
                 </View>
             </TouchableOpacity>
@@ -83,7 +78,7 @@ const SideBarMenu = ({name , Icon , NavScreen ,}) => {
                     setUpload(true),
                     setSearch(false) 
                   }}>
-                    <View >
+                    <View style={[upload === true ?(style.SelectedView):(style.UnSelected)]}>
                          <AntDesign name = 'addfile' size={30} color={upload === true ?(onSelectColor):('black')}/>
                     </View>
                 
@@ -107,21 +102,21 @@ const style = StyleSheet.create({
     },
     
     iconView:{
-        paddingTop:15,
-        flex:1,
+        paddingTop:70,
+        flex:0.8,
         flexDirection:'column' ,
         justifyContent:'space-evenly' ,
-        alignContent:'space-between'
+        
     },
-    unSelectedIcon:{
-       color:'white',
-        height:100,
-        alignContent:'center' , 
-        justifyContent:'center'
+    SelectedView:{
+        backgroundColor:'grey',
+        opacity:0.4,
+        height:70,
+        justifyContent: 'center'
     },
-    selectedIcon:{
-       
-        color:'grey'
+    UnSelected:{
+        height:70,
+        justifyContent: 'center'
     }
 })
 
