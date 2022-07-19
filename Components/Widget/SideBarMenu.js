@@ -8,7 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
-const SideBarMenu = ({home ,setHome ,library ,setLibrary ,search ,setSearch,notification , setNotification,upload ,setUpload}) => {
+const SideBarMenu = ({home ,setHome ,profile ,setProfile ,search ,setSearch,notification , setNotification,upload ,setUpload}) => {
 
   const onSelectColor ='white'
 
@@ -22,7 +22,7 @@ const SideBarMenu = ({home ,setHome ,library ,setLibrary ,search ,setSearch,noti
             <TouchableOpacity
               onPress={() => {
                 setHome(true),
-                setLibrary(false),
+                setProfile(false),
                 setNotification(false),
                 setUpload(false),
                 setSearch(false) 
@@ -35,20 +35,20 @@ const SideBarMenu = ({home ,setHome ,library ,setLibrary ,search ,setSearch,noti
             <TouchableOpacity
                  onPress={() => {
                     setHome(false),
-                    setLibrary(true),
+                    setProfile(true),
                     setNotification(false),
                     setUpload(false),
                     setSearch(false) 
                   }}
             >
-             <View style={[library === true ?(style.SelectedView):(style.UnSelected)]}>
-                <Feather name = 'book-open' size={30}  color={library === true ?(onSelectColor):('black')}/>
+             <View style={[profile === true ?(style.SelectedView):(style.UnSelected)]}>
+                <Feather name = 'user' size={30}  color={profile === true ?(onSelectColor):('black')}/>
              </View>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => {
                     setHome(false),
-                    setLibrary(false),
+                    setProfile(false),
                     setNotification(false),
                     setUpload(false),
                     setSearch(true) 
@@ -60,7 +60,7 @@ const SideBarMenu = ({home ,setHome ,library ,setLibrary ,search ,setSearch,noti
             <TouchableOpacity 
                 onPress={() => {
                     setHome(false),
-                    setLibrary(false),
+                    setProfile(false),
                     setNotification(true),
                     setUpload(false),
                     setSearch(false) 
@@ -73,7 +73,7 @@ const SideBarMenu = ({home ,setHome ,library ,setLibrary ,search ,setSearch,noti
             <TouchableOpacity
                 onPress={() => {
                     setHome(false),
-                    setLibrary(false),
+                    setProfile(false),
                     setNotification(false),
                     setUpload(true),
                     setSearch(false) 

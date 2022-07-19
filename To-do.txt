@@ -12,6 +12,7 @@
         color:'CD0B0B'
         color:"#00C0F0", limeBlue
         signUP  and Login Colors:#3E8525'
+        #EF5350    red-500
     }
     -font used {
         monospace,
@@ -96,4 +97,8 @@ webClientId:'638762542103-sdt23j2649ahk1d7ncbnlsq6fb29tq2g.apps.googleuserconten
   and email verification
 
 
-    
+ //19 july 2022
+ working on the library page
+ working on the search page    // not done with search page
+ working on the notification page 
+ working on the upload page
