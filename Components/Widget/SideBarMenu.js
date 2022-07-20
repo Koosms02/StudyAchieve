@@ -3,12 +3,12 @@ import { View, Text , StyleSheet, TouchableOpacity} from 'react-native'
 import React,{useState} from 'react'
 
 // import for icons used
-
+import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
-const SideBarMenu = ({home ,setHome ,profile ,setProfile ,search ,setSearch,notification , setNotification,upload ,setUpload}) => {
+const SideBarMenu = ({home ,setHome ,profile ,setProfile ,search ,setSearch,question , setQuestion,upload ,setUpload}) => {
 
   const onSelectColor ='white'
 
@@ -23,7 +23,7 @@ const SideBarMenu = ({home ,setHome ,profile ,setProfile ,search ,setSearch,noti
               onPress={() => {
                 setHome(true),
                 setProfile(false),
-                setNotification(false),
+                setQuestion(false),
                 setUpload(false),
                 setSearch(false) 
               }}
@@ -36,7 +36,7 @@ const SideBarMenu = ({home ,setHome ,profile ,setProfile ,search ,setSearch,noti
                  onPress={() => {
                     setHome(false),
                     setProfile(true),
-                    setNotification(false),
+                    setQuestion(false),
                     setUpload(false),
                     setSearch(false) 
                   }}
@@ -49,7 +49,7 @@ const SideBarMenu = ({home ,setHome ,profile ,setProfile ,search ,setSearch,noti
                 onPress={() => {
                     setHome(false),
                     setProfile(false),
-                    setNotification(false),
+                    setQuestion(false),
                     setUpload(false),
                     setSearch(true) 
                   }}>
@@ -61,20 +61,20 @@ const SideBarMenu = ({home ,setHome ,profile ,setProfile ,search ,setSearch,noti
                 onPress={() => {
                     setHome(false),
                     setProfile(false),
-                    setNotification(true),
+                    setQuestion(true),
                     setUpload(false),
                     setSearch(false) 
                 }}>
 
-                <View style={[notification === true ?(style.SelectedView):(style.UnSelected)]}>
-                    <Ionicons name = 'notifications-outline' size={30} color={notification === true ?(onSelectColor):('black')}/>
+                <View style={[question === true ?(style.SelectedView):(style.UnSelected)]}>
+                    <AntDesign name = 'questioncircle' size={30} color={question=== true ?(onSelectColor):('black')}/>
                 </View>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => {
                     setHome(false),
                     setProfile(false),
-                    setNotification(false),
+                setQuestion(false),
                     setUpload(true),
                     setSearch(false) 
                   }}>

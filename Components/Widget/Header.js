@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 
 const Header = ({
-    home , search ,notification , upload , profile ,
+    home , search ,question , upload , profile ,
     bool,
     logIn ,
     SignUp ,
@@ -23,8 +23,8 @@ const Header = ({
             return 'Home'
         }else if(search === true){
             return 'Search'
-        }else if(notification === true){
-            return 'Notification'
+        }else if(question === true){
+            return 'Question'
         }else if(upload === true){
             return 'Upload'
         }else if(profile ===true){

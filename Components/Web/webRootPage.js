@@ -4,9 +4,9 @@ import Header from '../Widget/Header'
 import SideBarMenu from '../Widget/SideBarMenu'
 import Home from './Pages/Home'
 import Profile from './Pages/Profile'
-import Notification  from './Pages/Notification'
 import Search from './Pages/Search'
 import Upload from './Pages/Upload'
+import Question from './Pages/Question'
 
 const webRootPage = () => {
 
@@ -14,8 +14,8 @@ const webRootPage = () => {
   const [home , setHome] = useState(false)
   const [profile , setProfile] = useState(false)
   const [search , setSearch] = useState(false)
-  const [notification , setNotification] = useState(false)
-  const [upload , setUpload] = useState(true)
+  const [question , setQuestion] = useState(true)
+  const [upload , setUpload] = useState(false)
  
   
 
@@ -26,8 +26,8 @@ const webRootPage = () => {
       return <Profile/>
     }else if(search === true){
       return <Search/>
-    }else if(notification === true){
-      return <Notification/>
+    }else if(question === true){
+      return <Question/>
     }else if(upload === true){
       return <Upload/>
     }
@@ -35,9 +35,9 @@ const webRootPage = () => {
   return (
     
     <View style={{flex:1 , flexDirection:'row'}}>
-     <SideBarMenu home={home}  setHome={setHome} profile ={profile} setProfile={setProfile} search={search} setSearch={setSearch} notification ={notification} setNotification={setNotification} upload={upload} setUpload={setUpload}/>
+     <SideBarMenu home={home}  setHome={setHome} profile ={profile} setProfile={setProfile} search={search} setSearch={setSearch} question ={question} setQuestion={setQuestion} upload={upload} setUpload={setUpload}/>
       <View style={{flex:1}}>
-      <Header  home ={home} search={search} notification ={notification} upload= {upload} profile={profile} bool ={true}/>
+      <Header  home ={home} search={search} question ={question} upload= {upload} profile={profile} bool ={true}/>
       
        {setPage()}
 

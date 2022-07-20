@@ -102,3 +102,14 @@ webClientId:'638762542103-sdt23j2649ahk1d7ncbnlsq6fb29tq2g.apps.googleuserconten
  working on the search page    // not done with search page
  working on the notification page 
  working on the upload page
+
+
+ // 20 july 2022
+ working on the Qestion page
+    -show random answers
+    -profile page 
+    -home page 
+    
+
+
+
