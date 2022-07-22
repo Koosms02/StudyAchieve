@@ -1,7 +1,7 @@
 import { View, Text ,StyleSheet ,TouchableOpacity, TextInput} from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign,FontAwesome5 } from '@expo/vector-icons';
 
 
 
@@ -33,24 +33,68 @@ const Header = ({
     }else{
        return 'StudyArchieve'
     }
-
- 
-    
   }
-  function Render(){
-    if(bool === true){
-        if(search === true){
-            return (<View style={{height:45 , width:'40%' , justifyContent:'center' , backgroundColor:'#EEEEEE' , borderRadius:10}}>
-                    <View style={{height:45 , width:'40%' , flexDirection:'row' , alignItems:'center' , paddingLeft:20,}}>
-                        <AntDesign name='search1' size={20} style={{paddingRight:20,}}/>
-                        <TextInput fontSize={20} placeholder='e.g Module name ,question' style={{ height:35 , width:2000}}/>
+
+  function searchBar(){
+    if(search === true){
+        return(
+
+            <View style={{width:'100%', height:'80%' , flexDirection:'row' ,alignItems:'center'}}>
+                <View style={{height:'100%' , width:'40%', backgroundColor:'#B0BEC5' ,justifyContent:'flex-start', flexDirection:'row' ,alignItems:'center',borderRadius:10}}>
+                    <AntDesign style={{marginLeft:5,marginRight:5}}name='search1' size={18}/>
+                    <TextInput style={{outline:'none' ,borderRadius:10,width:'100%' , height:'100%' ,placeholderTextColor:'#E0E0E0'}}  placeholder='notes , previouspapers'/>
+                </View>
+                <TouchableOpacity style={{marginLeft:'30%', height:'100%' , width:'15%' }}>
+                    <View style={{borderRadius:10,flexDirection:'row' , alignItems:'center',height:'100%' , width:'100%' , backgroundColor:'#E53935' }}>
+                        <FontAwesome5 style={{marginLeft:10 ,marginRight:10}} name='crown' size={10}/>
+                        <Text> upgrade</Text>    
                     </View>
-                 </View>)
-        }else{
-            return
-        }
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{marginLeft:10, height:'100%' , width:'10%' }}>
+                    <View style={{borderRadius:10,height:'100%' ,alignItems:'center', justifyContent:'center', width:'100%' , backgroundColor:'#E53935' }}>
+                        <Text>Get tutor</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={{marginLeft:10, height:'100%' , width:'10%'}}>
+                    <View style={{borderRadius:10,alignItems:'center', justifyContent:'center',height:'100%' , width:'100%' , backgroundColor:'#E53935' }}>
+                        <Text>Buy/Rent</Text>
+                    </View>
+
+                </TouchableOpacity>
+            </View>
+           
+
+            )
+    }else{
+        return(
+
+        <View style={{width:'100%', height:'80%' , flexDirection:'row' ,alignItems:'center'}}>  
+            <TouchableOpacity style={{marginLeft:'60%', height:'100%' , width:'15%' }}>
+                    <View style={{borderRadius:10,flexDirection:'row' , alignItems:'center',height:'100%' , width:'100%' , backgroundColor:'#E53935' }}>
+                        <FontAwesome5 style={{marginLeft:10 ,marginRight:10}} name='crown' size={10}/>
+                        <Text> upgrade</Text>    
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{marginLeft:10, height:'100%' , width:'10%' }}>
+                    <View style={{borderRadius:10,height:'100%' ,alignItems:'center', justifyContent:'center', width:'100%' , backgroundColor:'#E53935' }}>
+                        <Text>Get tutor</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={{marginLeft:10, height:'100%' , width:'10%'}}>
+                    <View style={{borderRadius:10,alignItems:'center', justifyContent:'center',height:'100%' , width:'100%' , backgroundColor:'#E53935' }}>
+                        <Text>Buy/Rent</Text>
+                    </View>
+
+                </TouchableOpacity>
+        </View>
+
+        )
     }
   }
+   
+  
   const navigation = useNavigation()
   return (
 
@@ -60,8 +104,10 @@ const Header = ({
             <Text style = {{color:'#00C0F0' , fontSize:30 , fontWeight:'bold' ,fontFamily:'monospace'}}> 
                 {Name()}</Text>
         </View>
+        <View style={{paddingLeft:40,height:'80%' , width:'80%'}}>
+            {searchBar()}
+        </View>
 
-        {Render()}
 
         <View style={{flexDirection:'row'}}>
             <TouchableOpacity
@@ -85,9 +131,23 @@ const Header = ({
 }
 
 const style = StyleSheet.create({
+    notsearch:{
+        marginLeft:'60%',
+        height:45,
+        justifyContents:'center' ,
+        flexDirection:'row' ,
+        alignItems:'center'
+    },
+    search:{
+        marginLeft:'20%',
+        height:45,
+        justifyContents:'center' ,
+        flexDirection:'row' ,
+        alignItems:'center'
+    },
     view:{
         flexDirection:'row',
-        justifyContent:'space-between',
+        justifyContent:'flex-start',
         alignItems:'center',
         height:70,
         width:'100%',

@@ -74,7 +74,7 @@ const SideBarMenu = ({home ,setHome ,profile ,setProfile ,search ,setSearch,ques
                 onPress={() => {
                     setHome(false),
                     setProfile(false),
-                setQuestion(false),
+                    setQuestion(false),
                     setUpload(true),
                     setSearch(false) 
                   }}>

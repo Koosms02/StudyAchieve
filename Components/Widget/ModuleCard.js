@@ -1,6 +1,8 @@
 import { View, Text ,StyleSheet ,Image} from 'react-native'
 import React from 'react'
 
+
+//should alo take the name of the module info
 const ModuleCard = ({picture}) => {
   return (
 

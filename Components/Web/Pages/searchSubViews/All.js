@@ -3,18 +3,10 @@ import React from 'react'
 
 const All = () => {
   return (
-    <View style={style.view}>
+    <View style={{justifyContent:'center', alignItems:'center', borderRadius:10}}>
        <Text> All</Text>
     </View>
   )
 }
 
-
-const style= StyleSheet.create({
-  view:{
-    justifyContent:'center',
-    alignContent:'center',
-    alignItems:'center',
-  }
-})
 export default All

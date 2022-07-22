@@ -3,7 +3,7 @@ import React from 'react'
 
 const PreviousPaper = () => {
   return (
-    <View>
+    <View  style={{justifyContent:'center',alignItems:'center'}}>
       <Text>PreviousPaper</Text>
     </View>
   )

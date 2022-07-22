@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React,{useState} from 'react'
-import Qna from './searchSubViews/Qna'
 import All from './searchSubViews/All'
 import Notes from './searchSubViews/Notes'
 import PreviousPaper from './searchSubViews/PreviousPaper'
@@ -10,7 +9,7 @@ const Search = () => {
   const [all , setAll] =useState(true)
   const [notes , setNotes] = useState(false)
   const [previousPaper , setPreviousPapers] =useState(false)
-  const [QnA , setQnA] = useState(false)
+  
   
 
   function subView(){
@@ -20,25 +19,26 @@ const Search = () => {
       return <Notes/>
     }else if(previousPaper === true){
       return <PreviousPaper/>
-    }else if(QnA === true){
-      return <Qna/>
     }
   }
   return (
+    
     <View>
       {/* header */}
-      <View>
+      <View style={{height:'10%' , width:'100%'}}>
         <View style={style.header}> 
           <View style={{flexDirection:'row' ,justifyContent:'space-between', height:20 , width:'40%'}}>
             <TouchableOpacity 
                 onPress={()=>{
                   setAll(true),
                   setNotes(false),
-                  setPreviousPapers(false),
-                  setQnA(false)
+                  setPreviousPapers(false)
+
                 }}>
-              <View style={all === true ?(style.selectedView):(style.unSelectedView)}>
-              <Text style={style.textStyle}> All </Text>
+                <View>
+                  <Text style={all === true ?({fontSize:18 , color:'#455A64',fontWeight:'bold'}):({fontSize:18,color:'#00C0F0',fontWeight:'bold'})}> All </Text>
+                  <View style={all === true ?({width:'100%' ,height:'16%', backgroundColor:'#455A64' ,borderTopLeftRadius:10 ,borderTopRightRadius:10}):({ })}>
+                </View>
               </View>
             </TouchableOpacity>
 
@@ -46,12 +46,14 @@ const Search = () => {
               onPress={()=>{
                 setAll(false),
                 setNotes(true),
-                setPreviousPapers(false),
-                setQnA(false)
+                setPreviousPapers(false)
+  
               }}
             >
-              <View style={notes === true ?(style.selectedView):(style.unSelectedView)}>
-              <Text style={style.textStyle}> Notes</Text>
+              <View>
+                <Text style={notes === true ?({fontSize:18 , color:'#455A64',fontWeight:'bold'}):({fontSize:18,color:'#00C0F0',fontWeight:'bold'})}> Notes </Text>
+                  <View style={notes === true ?({width:'100%' ,height:'16%', backgroundColor:'#455A64' , borderTopLeftRadius:10 ,borderTopRightRadius:10}):({})}>
+                </View>
               </View>
             </TouchableOpacity>
 
@@ -59,41 +61,21 @@ const Search = () => {
               onPress={()=>{
                 setAll(false),
                 setNotes(false),
-                setPreviousPapers(true),
-                setQnA(false)
+                setPreviousPapers(true)
+                
               }}
             >
-              <View style={previousPaper === true ?(style.selectedView):(style.unSelectedView)}>
-              <Text style={style.textStyle}> Previous Paper </Text>
+              <View>
+                <Text style={previousPaper === true ?({fontSize:18,fontWeight:'bold', color:'#455A64'}):({fontSize:18,fontWeight:'bold',color:'#00C0F0'})}> Previous Paper </Text>
+                <View style={previousPaper === true ?({width:'100%' ,height:'16%', backgroundColor:'#455A64' ,borderTopLeftRadius:10 ,borderTopRightRadius:10}):({})}>
               </View>
-            </TouchableOpacity>
 
-            <TouchableOpacity
-              onPress={()=>{
-                setAll(false),
-                setNotes(false),
-                setPreviousPapers(false),
-                setQnA(true)
-              }}
-            >
-              <View style={QnA === true ?(style.selectedView):(style.unSelectedView)}>
-              <Text style={style.textStyle}> QnA </Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
      </View>
-     <View>
-      
-        <View style={{padding:20}}>
-               <View style={[style.subView , {justifyContent:'center'} ]}>
-                   {subView()}  
-               </View>
-        </View>
-     </View>
-      
-
-
+     
     </View>
   )
 }
@@ -104,31 +86,26 @@ const style =StyleSheet.create({
     flexDirection:'row',
     width:'100%',
     height:40,
-    alignContent:'flex-end',
     alignItems:'flex-end',
-    // paddingBottom:5,
+    paddingBottom:8,
     justifyContent:'center'
   },
   textStyle:{
     fontWeight:'bold',
     fontSize:15,
-    color:'#00C0F0'
+    color:'#00C0F0',
+
     
-  },
-  subView:{
-    
-    height:400,
-    width:'70%',
-    backgroundColor:'white',
   },
   selectedView:{
-    height:'110%',
+
+    height:'10%',
     width:'100%',
     backgroundColor:'#EF5350',
     borderRadius:5
   },
   unSelectedView:{
-    height:'110%',
+    height:'10%',
     width:'100%',
     backgroundColor:'transparent',
     borderRadius:5

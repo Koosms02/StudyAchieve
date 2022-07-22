@@ -13,8 +13,8 @@ const webRootPage = () => {
   //should update once done with working with pages
   const [home , setHome] = useState(false)
   const [profile , setProfile] = useState(false)
-  const [search , setSearch] = useState(false)
-  const [question , setQuestion] = useState(true)
+  const [search , setSearch] = useState(true)
+  const [question , setQuestion] = useState(false)
   const [upload , setUpload] = useState(false)
  
   

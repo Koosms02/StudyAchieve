@@ -7,124 +7,111 @@ import pic3 from '../../../assets/images/pic3.jpg'
 import pic4 from '../../../assets/images/pic4.jpg'
 import pic5 from '../../../assets/images/pic5.jpg'
 import AnswerCard from '../../Widget/AnswerCard'
-import buyOrRent from '../../../assets/images/buyOrRent.jpg'
-import find_tutor from '../../../assets/images/find_tutor.jpg'
+
 
 
 const Home = () => {
 
-  const Answer = 'Solved 1: What is the difference between the react native and react'
+  const AnswerList = [
+    'solution 1: What is react native',
+    'solution 2: What is react',
+    'solution 3: What is your name',
+    'solution 4: What is DFT',
+  ]
+  const moduleList =[<ModuleCard picture={pic1} /> , 
+                     <ModuleCard picture={pic2} /> ,
+                     <ModuleCard picture={pic3} /> ,
+                     <ModuleCard picture={pic4} />  ]
   return (
     <ScrollView>
-
-      <View style={[style.mainView,{flex:1} ]}>
-        <View style={style.subView}>  
-          <View style={{padding:30,}}>
-            <Text style={style.greetingText}>Welcome to StudyArchieve</Text>
-          </View>
+      <View style={[style.mainView ]}>
+        <View style={{padding:20 , height:'15%' , width:'65%' , backgroundColor:'white' , borderRadius:10}}>  
+            <Text style={{marginTop:20,fontSize:'110%' , fontWeight:'bold' , color:'#F44336'}}>Welcome to StudyArchieve</Text>
         </View>
-        <View style={{width:'73%' ,paddingTop:40 , flex:1 ,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
-            <Text style={{fontWeight:'bold' , fontSize:20,}}>Recent</Text>
+        <View style={{width:'65%' ,paddingTop:40,flexDirection:'row', alignItems:'center',}}>
+            <Text style={{fontWeight:'bold' , fontSize:20,}}>Recently Viewed</Text>
         </View>
 
-        <View style={[style.subView, {flexDirection:'row', backgroundColor:'transparent', paddingTop:20,}]}>
-          {/* should add a scroll view */}
-          <ModuleCard picture={pic1} />
-          <ModuleCard picture={pic3}/>
-          <ModuleCard picture={pic4}/>
-          <ModuleCard picture={pic5}/>
+        <View style={{width:'65%' ,height:'15%',flexDirection:'row', backgroundColor:'tranparent', marginTop:20,}}>
+          <ScrollView horizontal={true}>
+            {moduleList}
+          </ScrollView>
+        </View>
+
+        <View style={{width:'65%',marginTop:40, marginBottom:40 , flex:1 ,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
+            <Text style={{fontWeight:'bold' , fontSize:'110%',}}>Recommanded study notes and documents</Text>
+            <TouchableOpacity>
+              <Text>view more</Text>
+            </TouchableOpacity>
+        </View>
+
+        <View style={{marginTop:20, width:'65%' ,height:'15%', flexDirection:'row'}}>
+          <ScrollView horizontal={true}>
+            {moduleList}
+          </ScrollView>
+
+        </View>
+
+        <View style={{width:'65%' ,marginTop:40,marginBottom:40 , flex:1 ,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
+            <Text style={{fontWeight:'bold' , fontSize:'110%',}}>Solutions to posted questions</Text>
+            <TouchableOpacity>
+              <Text>view more</Text>
+            </TouchableOpacity>
+        </View>
+        <View style={{ backgroundColor:'transparent', paddingTop:20,paddingBottom:20 ,width:'100%',height:'20%'}}>
          
-          
+          <AnswerCard AnswerList={AnswerList}/>
         </View>
 
-        <View style={{width:'73%',paddingTop:40 , flex:1 ,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
-            <Text style={{fontWeight:'bold' , fontSize:20,}}>Recommanded study notes and documents</Text>
-            <TouchableOpacity>
-              <Text>view more</Text>
-            </TouchableOpacity>
+        <View style={{width:'65%' , height:'9%' ,paddingTop:40  ,paddingBottom:20 ,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
+            <Text style={{fontWeight:'bold' , fontSize:'110%',}}> Donate your study material and help a fellow student </Text>
         </View>
 
-        <View style={{paddingTop:20,width:'73%' , height:200 , flex:8, flexDirection:'row'}}>
-            <ModuleCard picture={pic2}/>
-            <ModuleCard picture={pic3}/>
-            <ModuleCard picture={pic4}/>
-            <ModuleCard picture={pic5}/>   
-        </View>
-            
-            
-
-        
-        <View style={{width:800 ,paddingTop:40 , flex:1 ,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
-            <Text style={{fontWeight:'bold' , fontSize:20,}}>Solutions to posted questions</Text>
-            <TouchableOpacity>
-              <Text>view more</Text>
-            </TouchableOpacity>
-        </View>
-        <View style={[style.subView, { backgroundColor:'transparent', paddingTop:20,paddingBottom:20}]}>
-          {/* should add a scroll view */}
-          <AnswerCard Answer={Answer}/>
-        </View>
-
-        <View style={{width:'75%' ,paddingTop:40  ,paddingBottom:20, flex:1 ,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
-            <Text style={{fontWeight:'bold' , fontSize:20,}}> Need help with your homeworks </Text>
-        </View>
-        <View style={[style.subView ,{paddingTop:40}]}>  
-            <View style={{padding:30,}}>
-              <Text style={{fontWeight:'regular' , fontSize:25 , }}>Subscribe and get help from expert in no time 24/7</Text>
-              <Text style={{fontWeight:'bold' , fontSize:30}}>Ask a Question  </Text>
-              <Text style={{fontWeight:'regular', fontSize:25,}}>get Step by step solution</Text>
-            </View>
-          </View>
-        
-
-
-        <View style={{width:'75%' ,paddingTop:40  ,paddingBottom:20, flex:1 ,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
-            <Text style={{fontWeight:'bold' , fontSize:20,}}> Earn money by posting your study notes </Text>
-        </View>
-
-        <View style={style.subView}>  
+        <View style={{width:'65%' , height:'16%' , backgroundColor:'#00838F' , borderRadius:10}}>  
           <View style={{padding:20,}}>
-            {/* add a background images */}
             <View style={{paddingBottom: 20,flexDirection:'column' ,justifyContent:'flex-start' , alignItems:'flex-start'}}>
-                <Text style={{fontSize:20, paddingRight:10,}}>Get paid or get premium services of</Text>
+                <Text style={{fontSize:20, paddingRight:10,}}>Get premium services of</Text>
                 <Text style={{fontWeight:'bold', fontSize:30 ,color:'#00C0F0' ,}}>StudyArchieve</Text>
-                <Text style={{fontSize:20,}}>When you post study notes</Text>
+                <Text style={{fontSize:20,}}>for a week when you post study notes</Text>
             </View>
-
-            {/* should change these button */}
-            <Button  height={20} width={60} title='post'/>
-
-          </View>
-        </View>
-
-        <View style={{width:'75%' ,paddingTop:40  ,paddingBottom:20, flex:1 ,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
-            <Text style={{fontWeight:'bold' , fontSize:20,}}> Additional services offered by StudyArchieve </Text>
-        </View>
-
-        < View style={{paddingTop:30,flexDirection:'row' ,justifyContent:'space-evenly', height:450 , width:800}}>
-            <View style={{justifyContent:'center' ,alignItems:'center' ,height:380 , width:300 , backgroundColor:'white'}}> 
-              <Text style={{fontSize:18,color:"#00C0F0"}}> Solving textbook dilema</Text>
-              <Text style={{color:'#EF5350' ,fontSize:30,fontWeight:'bold' , paddingTop:60,textAlign:'center'}}> Buy or Rent a TextBook</Text>
-              <View style={{ justifyContent:'center' ,alignItems:'center' ,paddingTop:50, width:'76%' , height:'20%'}}>
-                <TouchableOpacity style={[style.appbutton,{paddingTop:25 , backgroundColor:'#EF5350'}]}> 
-                  <Text style={style.appButtonText}> buy or rent </Text>
-                </TouchableOpacity>
+            <TouchableOpacity style={{height:'30%' , width:'40%'}}>
+              <View style={{ alignItems:'center' , justifyContent:'center' ,height:'100%' , width:'40%' , backgroundColor:'#F44336' , borderRadius:10}}>
+                <Text>upload</Text>
               </View>
+            </TouchableOpacity>
 
-              
-          </View>
-          <View style={{justifyContent:'center' ,alignItems:'center' ,height:380 , width:300 , backgroundColor:'white'}}> 
-              <Text style={{fontSize:18,color:"#00C0F0"}}> Don't understand the content</Text>
-              <Text style={{color:'#EF5350' ,fontSize:30,fontWeight:'bold' , paddingTop:60,textAlign:'center'}}> Get  tutor</Text>
-              <View style={{ justifyContent:'center' ,alignItems:'center' ,paddingTop:50, width:'76%' , height:'20%'}}>
-                <TouchableOpacity style={[style.appbutton,{paddingTop:25 , backgroundColor:'#EF5350'}]}> 
-                  <Text style={style.appButtonText}> Get a tutor </Text>
-                </TouchableOpacity>
-              </View>
 
-              
           </View>
         </View>
+
+        <View style={{width:'65%' ,paddingTop:40  ,paddingBottom:20,flexDirection:'row', alignItems:'center', justifyContent:'space-between',}}>
+            <Text style={{fontWeight:'bold' , fontSize:'110%',}}> Additional services offered by StudyArchieve </Text>
+        </View>
+
+        < View style={{justifyContent:'space-between' ,backgroundColor:'transparent' ,padding:30 ,marginBottom:40,flexDirection:'row' , height:'15%' , width:'65%'}}>
+           <View style={{width:'40%' ,backgroundColor:'grey' , justifyContent:'center' , alignItems:'center', borderRadius:10}}>
+              <Text>Solving the college dilema</Text>
+              <Text  style={{marginTop:5 , fontWeight:'bold' ,fontSize:'160%',color:'#2196F3'}}>Buy Sell Rent </Text>
+              <Text>Textbook</Text> 
+              <TouchableOpacity style={{marginTop:15,width:'50%' , height:'20%' , }}>
+                <View style={{justifyContent:'center' ,alignItems:'center' ,width:'100%' , height:'100%' ,borderRadius:10,backgroundColor:'red'}} >
+                  <Text>buy sell or Rent</Text>
+                </View>
+              </TouchableOpacity>
+           </View>
+           <View style={{width:'40%' ,backgroundColor:'grey' , justifyContent:'center' , alignItems:'center' , borderRadius:10}}>
+              <Text>Don't understand the content </Text>
+              <Text  style={{marginTop:5 , fontWeight:'bold' ,fontSize:'140%',color:'#2196F3'}}>We got you covered </Text>
+              <Text style={{textAlign:'center'}}>get assign to talented tutor in your field</Text> 
+              <TouchableOpacity style={{marginTop:15,width:'50%' , height:'20%' , }}>
+                <View style={{justifyContent:'center' ,alignItems:'center' ,width:'100%' , height:'100%' ,borderRadius:10,backgroundColor:'red'}} >
+                  <Text>get a tutor</Text>
+                </View>
+              </TouchableOpacity>
+           </View>
+
+        </View>
+        <View style={{marginTop:50}}></View>
       </View>
 
     </ScrollView>
@@ -137,13 +124,7 @@ const style = StyleSheet.create({
     padding:20,
     paddingBottom:20,
   },
-  subView:{
-    height: '10%',
-    width:'73%',
-    backgroundColor:'white',
-    borderRadius:20,
-    borderStyle:'solid'
-  },
+  
   greetingText:{
     fontSize:20,
     fontWeight:'bold',
